@@ -43,8 +43,8 @@ fn main() -> Result<(), Box<Error>> {
         let data_size = u32::from_le_bytes([slice[28], slice[29], slice[30], slice[31]]) as usize;
 
         println!(
-            "offset={:08x} name={} file_size={} data_size={} (padding={})",
-            offset, name, file_size, data_size, file_size - data_size
+            "{:08x}-{:08x}: name={} file_size={:08x} data_size={:08x} (padding={:08x})",
+            offset, offset + file_size, name, file_size, data_size, file_size - data_size
         );
 
         // Write the chunk payload to disk
